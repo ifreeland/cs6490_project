@@ -209,7 +209,9 @@ public class TLSTestService {
 				ProcessBuilder pb = new ProcessBuilder(cmd.split(" "));
 				
 				// print out the program version
-				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version", ">>", "tls_version_running_server.txt");
+				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version");
+				versionCMD.redirectErrorStream(true);
+				versionCMD.redirectOutput(new File("tls_version_running_server_output.log"));
 				versionCMD.start();
 
 				if(CONSOLE_OUTPUT) {
@@ -242,7 +244,9 @@ public class TLSTestService {
 				ProcessBuilder pb = new ProcessBuilder(cmd.split(" "));
 
 				// print out the program version
-				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version", ">>", "tls_version_running_client.txt");
+				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version");
+				versionCMD.redirectErrorStream(true);
+				versionCMD.redirectOutput(new File("tls_version_running_server_client.log"));
 				versionCMD.start();
 				
 				if(CONSOLE_OUTPUT) {
