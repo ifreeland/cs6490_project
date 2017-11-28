@@ -208,6 +208,10 @@ public class TLSTestService {
 			if(cmd != null && !cmd.equals("")) {
 				ProcessBuilder pb = new ProcessBuilder(cmd.split(" "));
 				
+				// print out the program version
+				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version", ">>", "tls_version_running_server.txt");
+				versionCMD.start();
+
 				if(CONSOLE_OUTPUT) {
 					pb.inheritIO();
 				}
@@ -236,6 +240,10 @@ public class TLSTestService {
 			
 			if(cmd != null && !cmd.equals("")) {
 				ProcessBuilder pb = new ProcessBuilder(cmd.split(" "));
+
+				// print out the program version
+				ProcessBuilder versionCMD = new ProcessBuilder(cmd.split(" ")[0], "version", ">>", "tls_version_running_client.txt");
+				versionCMD.start();
 				
 				if(CONSOLE_OUTPUT) {
 					pb.inheritIO();
